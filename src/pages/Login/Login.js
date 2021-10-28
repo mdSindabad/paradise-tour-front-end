@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory, useLocation } from 'react-router';
+import { useHistory, useLocation, useParams } from 'react-router';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import './login.css';
 import { FaGoogle } from 'react-icons/fa';
@@ -48,7 +48,7 @@ const Login = () => {
 
     return (
         <Container className="mb-5">
-            <h1 className="text-center text-primary my-4">{newUser ? "Register" : "Login"}</h1>
+            <h1 className="text-center text-primary my-3">{newUser ? "Register" : "Login"}</h1>
             <Row className="d-flex justify-content-center">
                 <Col xs={10} md={6} className="form">
                     <Form onSubmit={handleFormSubmit}>

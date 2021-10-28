@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
+import './contact.css';
 
 const Contact = () => {
     // local state
@@ -44,10 +45,10 @@ const Contact = () => {
 
     return (
         <Container className="mb-5">
-            <h1 className="text-center my-3">Contact Us</h1>
+            <h1 className="text-center my-3 text-primary">Contact Us</h1>
             <Row className="d-flex justify-content-center">
                 <Col xs={11} md={6}>
-                    <Form onSubmit={handleMessage}>
+                    <Form className="form" onSubmit={handleMessage}>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                             <Form.Label>Name</Form.Label>
                             <Form.Control value={data.name} onChange={handleChange} name='name' type="text" placeholder="Your name" />

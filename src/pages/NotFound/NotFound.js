@@ -12,7 +12,7 @@ const NotFound = () => {
     };
 
     return (
-        <Container className="text-center mt-5 pt-5">
+        <Container className="text-center my-5 py-5">
             <div>
                 <h1 className="text-danger display-1 fw-bold">404</h1>
                 <p> Oops, sorry we can't find that page! </p>
