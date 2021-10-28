@@ -9,6 +9,7 @@ import Contact from './pages/Contact/Contact';
 import About from './pages/About/About';
 import Login from './pages/Login/Login';
 import NotFound from './pages/NotFound/NotFound';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
           <NotFound />
         </Route>
       </Switch>
+      <Footer />
     </Router>
   );
 }
