@@ -11,6 +11,7 @@ import Login from './pages/Login/Login';
 import NotFound from './pages/NotFound/NotFound';
 import Footer from './components/Footer/Footer';
 import AuthProvider from './contexts/AuthProvider';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 function App() {
   return (
@@ -21,12 +22,12 @@ function App() {
           <Route exact path='/'>
             <Home />
           </Route>
-          <Route path='/destinations'>
+          <PrivateRoute path='/destinations'>
             <Destinations />
-          </Route>
-          <Route path='/tours'>
+          </PrivateRoute>
+          <PrivateRoute path='/tours'>
             <Tours />
-          </Route>
+          </PrivateRoute>
           <Route path='/about'>
             <About />
           </Route>
