@@ -17,7 +17,7 @@ const Header = () => {
     const handleShow = () => setShow(true);
 
     return (
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Navbar className="fixed-top" collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
                 <Navbar.Brand as={Link} to='/'>Paradise<span className="text-warning">Travel</span></Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />

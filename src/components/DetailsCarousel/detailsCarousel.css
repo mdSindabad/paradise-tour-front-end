@@ -1,0 +1,14 @@
+.slider {
+    height: 350px;
+}
+
+@media only screen and (min-width: 600px) {
+    .slider {
+        height: 450px;
+    }
+}
+@media only screen and (min-width: 900px) {
+    .slider {
+        height: 100vh;
+    }
+}

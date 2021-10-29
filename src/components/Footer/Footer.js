@@ -31,6 +31,7 @@ const Footer = () => {
                             <p onClick={() => handleClick('/about')} className="cursor text-primary mb-0">About Us</p>
                             <p onClick={() => handleClick('/contact')} className="cursor text-primary mb-0">Contact</p>
                             <p onClick={() => handleClick('/login')} className="cursor text-primary mb-0">Login/ Register</p>
+                            <p onClick={() => handleClick('/destinations')} className="cursor text-primary mb-0">Destinations</p>
                         </div>
                     </Col>
                     <Col className="mt-3" xs={12} md={6}>
