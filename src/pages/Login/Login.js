@@ -1,14 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory, useLocation, useParams } from 'react-router';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import './login.css';
 import { FaGoogle } from 'react-icons/fa';
+import useAuth from '../../hooks/useAuth';
 
 const Login = () => {
     // router hook
     const location = useLocation();
     const history = useHistory();
     const path = location.state?.from || '/';
+
+    // auth context
+    const { user, signInWithGoogle, registerWithEmail, loginWithEmail } = useAuth();
+
+    console.log(user)
 
     // local state
     const initialUserInput = {
@@ -29,12 +35,26 @@ const Login = () => {
             return
         } else {
             if (newUser) {
-
+                registerWithEmail(name, email, password)
             } else {
-
+                loginWithEmail(email, password)
+                    .then(result => {
+                        history.push(path)
+                    })
+                    .catch(err => setError(err.message))
             }
         }
     };
+
+    // signin with google
+    const handleGoogleSignin = () => {
+        setError('');
+        signInWithGoogle()
+            .then(result => {
+                history.push(path)
+            })
+            .catch(err => setError(err.message))
+    }
 
     // checkbox handler
     const handleCheckBox = () => {
@@ -45,6 +65,12 @@ const Login = () => {
     const handleChange = (e) => {
         setUserInput(prevInput => ({ ...prevInput, [e.target.name]: e.target.value }))
     };
+
+    useEffect(() => {
+        if (user.email) {
+            history.push(path);
+        }
+    }, [user])
 
     return (
         <Container className="mb-5">
@@ -77,7 +103,7 @@ const Login = () => {
                         <Button variant="primary" type="submit" className="form-control">
                             {newUser ? "Register" : "Login"}
                         </Button>
-                        <Button variant="secondary mt-2" className="form-control d-flex align-items-center justify-content-center" onClick="">
+                        <Button variant="secondary mt-2" className="form-control d-flex align-items-center justify-content-center" onClick={handleGoogleSignin}>
                             <FaGoogle className="me-1" /> Google
                         </Button>
                     </Form>
