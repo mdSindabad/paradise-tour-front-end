@@ -8,7 +8,6 @@ import UserModal from '../UserModal/UserModal';
 const Header = () => {
     // auth context
     const { user, logOut } = useAuth();
-    console.log(user)
 
     // local state
     const [show, setShow] = useState(false);
@@ -35,8 +34,8 @@ const Header = () => {
                         <Nav.Link as={Link} to='/contact'>Contact</Nav.Link>
                         {
                             user?.photoURL ?
-                                <img onClick={handleShow} style={{ width: "30px", height: "30px", cursor: "pointer" }} className="rounded-circle" src={user.photoURL} alt={user.displayName} /> :
-                                user.email && <FaUserCircle onClick={handleShow} style={{ width: "30px", height: "30px", cursor: "pointer" }} className="rounded-circle text-primary" />
+                                <img onClick={handleShow} style={{ width: "30px", height: "30px", cursor: "pointer" }} className="rounded-circle" src={user.photoURL} alt={user.displayName} title="Open Modal" /> :
+                                user.email && <FaUserCircle onClick={handleShow} style={{ width: "30px", height: "30px", cursor: "pointer" }} className="rounded-circle text-primary" title="Open Modal" />
                         }
                         {
                             !user?.email && <Nav.Link as={Link} to="/login">Login</Nav.Link>

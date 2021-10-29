@@ -3,6 +3,7 @@ import { Modal, Button } from 'react-bootstrap';
 import { FaUserCircle } from 'react-icons/fa';
 
 const UserModal = ({ show, handleClose, user, logOut }) => {
+
     return (
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
