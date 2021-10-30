@@ -19,7 +19,9 @@ const DestinationDetails = () => {
         setError('');
         setIsloading(true);
 
-        axios.get(`http://localhost:5000/service/${params.destinationId}`)
+        //https://lit-castle-83888.herokuapp.com
+
+        axios.get(`https://lit-castle-83888.herokuapp.com/service/${params.destinationId}`)
             .then(res => {
                 setService(res.data);
                 setIsloading(false);

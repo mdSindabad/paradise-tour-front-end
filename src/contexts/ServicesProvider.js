@@ -14,7 +14,7 @@ const ServicesProvider = ({ children }) => {
         setError('');
         setIsloading(true);
 
-        axios.get('http://localhost:5000/')
+        axios.get('https://lit-castle-83888.herokuapp.com/service')
             .then(res => {
                 setServices(res.data);
                 setIsloading(false);
