@@ -25,7 +25,7 @@ const Header = () => {
                     <Nav className="ms-auto d-flex align-items-center">
                         {
                             user?.email && <Nav.Link className="text-capitalize text-success" onClick={handleShow} >welcome {user.displayName.split(' ')[0]
-                                || user.email.split("@")[0]}</Nav.Link>
+                                || user?.email?.split("@")[0]}</Nav.Link>
                         }
                         <Nav.Link as={Link} to='/'>Home</Nav.Link>
                         <Nav.Link as={Link} to='/destinations'>Destinations</Nav.Link>

@@ -13,7 +13,7 @@ const Destinations = () => {
         <Container className="mt-4 pt-4">
             <h1 className="my-3 text-primary">Destinations</h1>
             {
-                isLoading ? <div className="vh-100 d-flex justify-content-center mt-5">
+                isLoading ? <div className=" d-flex justify-content-center mt-5 align-items-center">
                     <Spinner animation="border" variant="warning" />
                 </div> :
                     error ? <div className="vh-100 d-flex justify-content-center align-items-center">

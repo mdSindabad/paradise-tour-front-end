@@ -14,8 +14,6 @@ const Login = () => {
     // auth context
     const { user, signInWithGoogle, registerWithEmail, loginWithEmail } = useAuth();
 
-    console.log(user)
-
     // local state
     const initialUserInput = {
         name: "",
@@ -73,7 +71,7 @@ const Login = () => {
     }, [user])
 
     return (
-        <Container className="mb-5">
+        <Container className="mb-5 mt-4 pt-4">
             <h1 className="text-center text-primary my-3">{newUser ? "Register" : "Login"}</h1>
             <Row className="d-flex justify-content-center">
                 <Col xs={10} md={6} className="form">

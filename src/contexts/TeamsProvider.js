@@ -7,25 +7,25 @@ export const TeamsContext = createContext();
 const TeamsProvider = ({ children }) => {
     // local state
     const [teams, setTeams] = useState({});
-    const [isLoading, setIsloading] = useState(true);
-    const [error, setError] = useState('');
+    const [isLoadingTeam, setIsloadingTeam] = useState(true);
+    const [teamError, setTeamError] = useState('');
 
     useEffect(() => {
-        setError('');
-        setIsloading(true);
+        setTeamError('');
+        setIsloadingTeam(true);
 
         axios.get('http://localhost:5000/teams')
             .then(res => {
                 setTeams(res.data);
-                setIsloading(false);
+                setIsloadingTeam(false);
             })
             .catch(err => {
-                setError(err.message);
-                setIsloading(false);
+                setTeamError(err.message);
+                setIsloadingTeam(false);
             })
     }, []);
     return (
-        <TeamsContext.Provider value={{ teams, isLoading, error }}>
+        <TeamsContext.Provider value={{ teams, isLoadingTeam, teamError }}>
             {children}
         </TeamsContext.Provider>
     )

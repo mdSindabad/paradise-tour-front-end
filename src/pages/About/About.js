@@ -11,7 +11,7 @@ import './about.css';
 
 const About = () => {
     // context hook
-    const { teams } = useTeams();
+    const { isLoadingTeam, teams } = useTeams();
 
     return (
         <>
@@ -33,7 +33,9 @@ const About = () => {
                     <Col xs={12} md={4}><h6><b><FaThumbsUp className="mb-1 text-primary me-1" />Proper Guidance</b></h6></Col>
                     <Col xs={12} md={4}><h6><b><BiSupport className="mb-1 text-primary me-1" />24/7 support</b></h6></Col>
                 </Row>
-                <Team teams={teams} />
+                {
+                    !isLoadingTeam && <Team teams={teams} />
+                }
             </Container>
         </>
     )

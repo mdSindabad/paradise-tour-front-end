@@ -2,6 +2,7 @@ import React from 'react';
 import { Alert, Container, Spinner } from 'react-bootstrap';
 import Destination from '../../components/Destination/Destination';
 import HomeCarousel from '../../components/HomeCarousel/HomeCarousel';
+import RecentTour from '../../components/RecentTour/RecentTour';
 import Team from '../../components/Team/Team';
 import useServices from '../../hooks/useServices';
 import useTeams from '../../hooks/useTeams';
@@ -10,7 +11,7 @@ import './home.css';
 const Home = () => {
     // context hook
     const { isLoading, error, services } = useServices();
-    const { teams } = useTeams();
+    const { isLoadingTeam, teams } = useTeams();
 
     return (
         <>
@@ -36,8 +37,16 @@ const Home = () => {
                                         })
                                     }
                                 </div>
+                                <h2 className="mt-5">Recent Tours</h2>
+                                <div className="tour-container my-3">
+                                    {
+                                        !isLoading && <RecentTour services={services.slice(0, 3)} />
+                                    }
+                                </div>
                                 <div>
-                                    <Team teams={teams.slice(0, 3)} />
+                                    {
+                                        !isLoadingTeam && <Team teams={teams.slice(0, 3)} />
+                                    }
                                 </div>
                             </Container>
                         </div>
