@@ -5,16 +5,19 @@ import { useHistory, useParams } from 'react-router';
 import DetailsCarousel from '../../components/DetailsCarousel/DetailsCarousel';
 import useAuth from '../../hooks/useAuth';
 import PurchaseModal from '../../components/PurchaseModal/PurchaseModal';
+import usePurchased from '../../hooks/usePurchased';
 
 const DestinationDetails = () => {
     // context hook
     const { user } = useAuth();
+    const { purchased } = usePurchased();
 
     // local state
     const [service, setService] = useState();
     const [isLoading, setIsloading] = useState(true);
     const [error, setError] = useState('');
     const [show, setShow] = useState(false);
+    const [member, setMember] = useState(0);
 
     // router hook
     const params = useParams();
@@ -30,6 +33,12 @@ const DestinationDetails = () => {
             .then(res => {
                 setService(res.data);
                 setIsloading(false);
+
+                // check tour members
+                const isPurchased = purchased.filter(each => {
+                    return each.package == res.data.title
+                });
+                setMember(isPurchased?.length)
             })
             .catch(err => {
                 console.log('error...')
@@ -62,6 +71,7 @@ const DestinationDetails = () => {
                                         <p className="my-0"><b>Location: </b>{service.location}</p>
                                         <p className="my-0"><b>Tour Duration: </b>{service.duration}</p>
                                         <p className="my-0"><b>Package Price: </b>${service.price}</p>
+                                        <p className="my-0"><b>Tour Member: </b>{member}</p>
                                     </div>
                                     <div>
                                         <Button onClick={handleShow} className="my-2" variant="primary">Purchase</Button>
