@@ -8,7 +8,7 @@ const PrivateRoute = ({ children, ...rest }) => {
 
     if (isLoading) {
         return (
-            <div className="d-flex justify-content-center mt-5 vh-100">
+            <div className="d-flex justify-content-center mt-5 pt-4 vh-100">
                 <Spinner animation="border" variant="warning" />
             </div>
         )
