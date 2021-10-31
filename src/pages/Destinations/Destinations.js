@@ -10,7 +10,7 @@ const Destinations = () => {
     const { services, isLoading, error } = useServices();
 
     return (
-        <Container>
+        <Container className="mt-4 pt-4">
             <h1 className="my-3 text-primary">Destinations</h1>
             {
                 isLoading ? <div className="vh-100 d-flex justify-content-center mt-5">

@@ -1,0 +1,16 @@
+.banner {
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.637);
+
+}
+.banner img {
+    position: relative;
+    z-index: -1;
+}
+.title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: #fff;
+    transform: translate(-50%, -50%);
+}

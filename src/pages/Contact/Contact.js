@@ -44,7 +44,7 @@ const Contact = () => {
     };
 
     return (
-        <Container className="my-5 pt-2">
+        <Container className="my-5 pt-3">
             <h1 className="text-center my-3 text-primary">Contact Us</h1>
             <Row className="d-flex justify-content-center">
                 <Col xs={11} md={6}>

@@ -1,0 +1,37 @@
+.team-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+}
+
+.team {
+    border-radius: 5px;
+    padding: 0 !important;
+    box-shadow: 1px 1px 2px gray;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+}
+.team:hover {
+    transform: scale(1.02);
+}
+.img-container {
+    height: 250px;
+    width: 100%;
+    overflow: hidden;
+}
+.team img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+@media only screen and (min-width:768px) {
+    .team-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media only screen and (min-width:900px) {
+    .team-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

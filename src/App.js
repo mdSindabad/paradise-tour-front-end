@@ -14,41 +14,44 @@ import AuthProvider from './contexts/AuthProvider';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import ServicesProvider from './contexts/ServicesProvider';
 import DestinationDetails from './pages/DestinationDetails/DestinationDetails';
+import TeamsProvider from './contexts/TeamsProvider';
 
 function App() {
   return (
     <AuthProvider>
       <ServicesProvider>
-        <Router>
-          <Header />
-          <Switch>
-            <Route exact path='/'>
-              <Home />
-            </Route>
-            <PrivateRoute path='/destinations'>
-              <Destinations />
-            </PrivateRoute>
-            <PrivateRoute path='/destination/:destinationId'>
-              <DestinationDetails />
-            </PrivateRoute>
-            <PrivateRoute path='/tours'>
-              <Tours />
-            </PrivateRoute>
-            <Route path='/about'>
-              <About />
-            </Route>
-            <Route path='/contact'>
-              <Contact />
-            </Route>
-            <Route path='/login'>
-              <Login />
-            </Route>
-            <Route path='*'>
-              <NotFound />
-            </Route>
-          </Switch>
-          <Footer />
-        </Router>
+        <TeamsProvider>
+          <Router>
+            <Header />
+            <Switch>
+              <Route exact path='/'>
+                <Home />
+              </Route>
+              <PrivateRoute path='/destinations'>
+                <Destinations />
+              </PrivateRoute>
+              <PrivateRoute path='/destination/:destinationId'>
+                <DestinationDetails />
+              </PrivateRoute>
+              <PrivateRoute path='/tours'>
+                <Tours />
+              </PrivateRoute>
+              <Route path='/about'>
+                <About />
+              </Route>
+              <Route path='/contact'>
+                <Contact />
+              </Route>
+              <Route path='/login'>
+                <Login />
+              </Route>
+              <Route path='*'>
+                <NotFound />
+              </Route>
+            </Switch>
+            <Footer />
+          </Router>
+        </TeamsProvider>
       </ServicesProvider>
     </AuthProvider>
   );

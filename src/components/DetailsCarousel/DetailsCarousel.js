@@ -8,7 +8,7 @@ const DetailsCarousel = ({ images, title }) => {
             {
                 images.map((image, index) => {
                     return (
-                        <Carousel.Item className="slider">
+                        <Carousel.Item key={index} className="slider">
                             <img style={{ width: "100%", height: "100%", objectFit: "cover" }} src={image} alt={title} />
                         </Carousel.Item>
                     )
