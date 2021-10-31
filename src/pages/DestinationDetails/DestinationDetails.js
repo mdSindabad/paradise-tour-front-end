@@ -3,13 +3,18 @@ import axios from 'axios';
 import { Alert, Button, Container, Spinner } from 'react-bootstrap';
 import { useHistory, useParams } from 'react-router';
 import DetailsCarousel from '../../components/DetailsCarousel/DetailsCarousel';
+import useAuth from '../../hooks/useAuth';
+import PurchaseModal from '../../components/PurchaseModal/PurchaseModal';
 
 const DestinationDetails = () => {
+    // context hook
+    const { user } = useAuth();
+
     // local state
     const [service, setService] = useState();
     const [isLoading, setIsloading] = useState(true);
     const [error, setError] = useState('');
-
+    const [show, setShow] = useState(false);
 
     // router hook
     const params = useParams();
@@ -31,7 +36,11 @@ const DestinationDetails = () => {
                 setError(err.message);
                 setIsloading(false);
             })
-    }, [])
+    }, []);
+
+    // modal handler
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     return (
         <>
@@ -55,11 +64,15 @@ const DestinationDetails = () => {
                                         <p className="my-0"><b>Package Price: </b>${service.price}</p>
                                     </div>
                                     <div>
-                                        <Button className="my-2" variant="primary">Purchase</Button>
+                                        <Button onClick={handleShow} className="my-2" variant="primary">Purchase</Button>
                                     </div>
                                 </div>
                                 <p className="mt-2">{service.descriptions}</p>
                             </Container>
+                            {
+                                user.email &&
+                                <PurchaseModal show={show} handleClose={handleClose} user={user} service={service} />
+                            }
                         </div>
             }
         </>
