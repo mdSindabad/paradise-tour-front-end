@@ -3,12 +3,15 @@ import React, { useEffect, useState } from 'react';
 import { Alert, Badge, Button, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import usePurchased from '../../hooks/usePurchased';
+import useServices from '../../hooks/useServices';
 import './ManageOrders.css';
 
 const ManageOrders = () => {
     // context hook
     const { purchased, setUpdate } = usePurchased();
+    const { services, isLoading } = useServices();
 
+    console.log(services)
     // local state
     const [filteredList, setFilteredList] = useState([]);
     const [selected, setSelected] = useState('all');
@@ -62,13 +65,11 @@ const ManageOrders = () => {
             <h1 className="text-primary">Manage Orders</h1>
             <Button as={Link} to="/tours" variant="primary">Recent Tours</Button>
             <div className="btn-container d-flex flex-wrap gap-2">
-                <button onClick={updateList} className={selected == "all" && "selected"}>All</button>
-                <button onClick={updateList} className={selected == "paris" && "selected"}>Paris</button>
-                <button onClick={updateList} className={selected == "london" && "selected"}>London</button>
-                <button onClick={updateList} className={selected == "rome" && "selected"}>Rome</button>
-                <button onClick={updateList} className={selected == "sydney" && "selected"}>Sydney</button>
-                <button onClick={updateList} className={selected == "bali" && "selected"}>Bali</button>
-                <button onClick={updateList} className={selected == "santorini" && "selected"}>Santorini</button>
+                {
+                    !isLoading && services?.map(service => {
+                        return <button onClick={updateList} className={selected == "santorini" && "selected"}>{service.title?.split(":")[0]}</button>
+                    })
+                }
             </div>
             {
                 filteredList.length == 0 ? <div className="vh-100 d-flex justify-content-center align-items-center">
@@ -77,7 +78,7 @@ const ManageOrders = () => {
                     </Alert>
                 </div> :
                     <div className="tour mt-4">{
-                        filteredList.map(item => {
+                        filteredList?.map(item => {
                             return <div className="tour-item" key={item._id}>
                                 <h5 className="text-center text-success">{item.package}</h5>
                                 <div className="body">

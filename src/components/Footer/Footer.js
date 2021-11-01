@@ -1,10 +1,14 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 import { Button, Col, Container, FormControl, InputGroup, Row } from 'react-bootstrap';
 import { ImLocation2, ImPhone, ImMail4 } from 'react-icons/im';
-import './footer.css'
+import './footer.css';
 
 const Footer = () => {
+    // auth context
+    const { user } = useAuth();
+
     // router hook
     const history = useHistory();
 
@@ -30,7 +34,10 @@ const Footer = () => {
                         <div className="mt-2">
                             <p onClick={() => handleClick('/about')} className="cursor text-primary mb-0">About Us</p>
                             <p onClick={() => handleClick('/contact')} className="cursor text-primary mb-0">Contact</p>
-                            <p onClick={() => handleClick('/login')} className="cursor text-primary mb-0">Login/ Register</p>
+                            {
+                                !user.email &&
+                                <p onClick={() => handleClick('/login')} className="cursor text-primary mb-0">Login/ Register</p>
+                            }
                             <p onClick={() => handleClick('/destinations')} className="cursor text-primary mb-0">Destinations</p>
                         </div>
                     </Col>
