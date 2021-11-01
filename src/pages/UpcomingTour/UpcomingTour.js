@@ -27,7 +27,7 @@ const UpcomingTour = () => {
     const updateStatus = (id) => {
         const res = window.confirm("Do you want to update status?")
         if (res) {
-            axios.put(`http://localhost:5000/update-status/${id}`, {
+            axios.put(`https://lit-castle-83888.herokuapp.com/update-status/${id}`, {
                 status: "completed"
             })
                 .then(res => {
@@ -42,7 +42,7 @@ const UpcomingTour = () => {
     const cancelOrder = (id) => {
         const res = window.confirm("Do you want to cancel order?")
         if (res) {
-            axios.delete(`http://localhost:5000/cancel-order/${id}`, {})
+            axios.delete(`https://lit-castle-83888.herokuapp.com/cancel-order/${id}`, {})
                 .then(res => {
                     setUpdate(true)
                 })
@@ -69,6 +69,7 @@ const UpcomingTour = () => {
                 <button onClick={updateList} className={selected == "rome" && "selected"}>Rome</button>
                 <button onClick={updateList} className={selected == "sydney" && "selected"}>Sydney</button>
                 <button onClick={updateList} className={selected == "bali" && "selected"}>Bali</button>
+                <button onClick={updateList} className={selected == "santorini" && "selected"}>Santorini</button>
             </div>
             {
                 filteredList.length == 0 ? <div className="vh-100 d-flex justify-content-center align-items-center">

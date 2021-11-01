@@ -14,7 +14,7 @@ const TeamsProvider = ({ children }) => {
         setTeamError('');
         setIsloadingTeam(true);
 
-        axios.get('http://localhost:5000/teams')
+        axios.get('https://lit-castle-83888.herokuapp.com/teams')
             .then(res => {
                 setTeams(res.data);
                 setIsloadingTeam(false);

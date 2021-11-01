@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { GoogleAuthProvider, getAuth, signInWithPopup, onAuthStateChanged, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import initilizeAuthentication from "../firebase/firebase.init";
+import { useHistory } from "react-router";
 
 initilizeAuthentication();
 
 const useFirebase = () => {
     const auth = getAuth();
+    const history = useHistory();
 
     // local state
     const [user, setUser] = useState({});

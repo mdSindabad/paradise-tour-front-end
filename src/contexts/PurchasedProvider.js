@@ -16,7 +16,7 @@ const PurchasedProvider = ({ children }) => {
         setPurchasedError('');
         setIsloadingPurchased(true);
 
-        axios.get('http://localhost:5000/purchase')
+        axios.get('https://lit-castle-83888.herokuapp.com/purchase')
             .then(res => {
                 setPurchased(res.data);
                 setIsloadingPurchased(false);

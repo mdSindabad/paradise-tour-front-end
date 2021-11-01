@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory, useLocation, useParams } from 'react-router';
+import { useHistory, useLocation } from 'react-router';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import './login.css';
 import { FaGoogle } from 'react-icons/fa';
