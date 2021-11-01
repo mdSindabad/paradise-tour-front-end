@@ -2,11 +2,10 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Alert, Badge, Button, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import TourModal from '../../components/TourModal/TourModal';
 import usePurchased from '../../hooks/usePurchased';
-import './upcomingTour.css';
+import './ManageOrders.css';
 
-const UpcomingTour = () => {
+const ManageOrders = () => {
     // context hook
     const { purchased, setUpdate } = usePurchased();
 
@@ -60,7 +59,7 @@ const UpcomingTour = () => {
 
     return (
         <Container className="my-5 pt-4">
-            <h1 className="text-primary">Upcoming Tours</h1>
+            <h1 className="text-primary">Manage Orders</h1>
             <Button as={Link} to="/tours" variant="primary">Recent Tours</Button>
             <div className="btn-container d-flex flex-wrap gap-2">
                 <button onClick={updateList} className={selected == "all" && "selected"}>All</button>
@@ -97,4 +96,4 @@ const UpcomingTour = () => {
     )
 }
 
-export default UpcomingTour;
+export default ManageOrders;

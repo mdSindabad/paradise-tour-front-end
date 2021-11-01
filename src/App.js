@@ -16,7 +16,7 @@ import ServicesProvider from './contexts/ServicesProvider';
 import DestinationDetails from './pages/DestinationDetails/DestinationDetails';
 import TeamsProvider from './contexts/TeamsProvider';
 import PurchasedProvider from './contexts/PurchasedProvider';
-import UpcomingTour from './pages/UpcomingTour/UpcomingTour';
+import ManageOrders from './pages/ManageOrders/ManageOrders';
 
 function App() {
   return (
@@ -30,17 +30,17 @@ function App() {
                 <Route exact path='/'>
                   <Home />
                 </Route>
-                <PrivateRoute path='/destinations'>
+                <Route path='/destinations'>
                   <Destinations />
-                </PrivateRoute>
+                </Route>
                 <PrivateRoute path='/destination/:destinationId'>
                   <DestinationDetails />
                 </PrivateRoute>
-                <PrivateRoute path='/tours'>
+                <Route path='/tours'>
                   <Tours />
-                </PrivateRoute>
+                </Route>
                 <PrivateRoute path='/upcoming-tours'>
-                  <UpcomingTour />
+                  <ManageOrders />
                 </PrivateRoute>
                 <Route path='/about'>
                   <About />

@@ -23,6 +23,15 @@ const DestinationDetails = () => {
     const params = useParams();
     const history = useHistory();
 
+    const handlePurchase = () => {
+        console.log("bingo..")
+        if (!user?.email) {
+            history.push('/login')
+        } else {
+            handleShow()
+        }
+    }
+
     useEffect(() => {
         setError('');
         setIsloading(true);
@@ -72,7 +81,7 @@ const DestinationDetails = () => {
                                         <p className="my-0"><b>Tour Member: </b>{member}</p>
                                     </div>
                                     <div>
-                                        <Button onClick={handleShow} className="my-2" variant="primary">Purchase</Button>
+                                        <Button onClick={handlePurchase} className="my-2" variant="primary">Purchase</Button>
                                     </div>
                                 </div>
                                 <p className="mt-2">{service.descriptions}</p>

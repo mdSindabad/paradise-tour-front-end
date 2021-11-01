@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import { FaUserCircle } from 'react-icons/fa';
 import UserModal from '../UserModal/UserModal';
+import usePurchased from '../../hooks/usePurchased';
 
 const Header = () => {
     // auth context
     const { user, logOut } = useAuth();
+
+    // purchase context
+    const { purchased } = usePurchased();
 
     // local state
     const [show, setShow] = useState(false);
@@ -15,6 +19,10 @@ const Header = () => {
     // modal handler
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    useEffect(() => {
+
+    }, [purchased])
 
     return (
         <Navbar className="fixed-top" collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -28,7 +36,7 @@ const Header = () => {
                         }
                         <Nav.Link as={Link} to='/'>Home</Nav.Link>
                         <Nav.Link as={Link} to='/destinations'>Destinations</Nav.Link>
-                        <Nav.Link as={Link} to='/upcoming-tours'>Tours</Nav.Link>
+                        {user.email && <Nav.Link as={Link} to='/upcoming-tours'>Manage Orders</Nav.Link>}
                         <Nav.Link as={Link} to='/about'>About</Nav.Link>
                         <Nav.Link as={Link} to='/contact'>Contact</Nav.Link>
                         {
