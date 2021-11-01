@@ -27,8 +27,6 @@ const DestinationDetails = () => {
         setError('');
         setIsloading(true);
 
-        //https://lit-castle-83888.herokuapp.com
-
         axios.get(`https://lit-castle-83888.herokuapp.com/service/${params.destinationId}`)
             .then(res => {
                 setService(res.data);
