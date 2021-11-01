@@ -19,8 +19,7 @@ const PurchaseModal = ({ show, handleClose, user, service }) => {
     });
 
     const handlePurchase = () => {
-        setUpdate(true)
-        axios.post('http://localhost:5000/purchase', {
+        axios.post('https://lit-castle-83888.herokuapp.com/purchase', {
             name: user.displayName,
             email: user.email,
             package: service.title,
@@ -30,6 +29,7 @@ const PurchaseModal = ({ show, handleClose, user, service }) => {
         })
             .then(response => {
                 if (response.data.insertedId) {
+                    setUpdate(true)
                     history.push('/destinations');
                 }
             })

@@ -24,7 +24,6 @@ const DestinationDetails = () => {
     const history = useHistory();
 
     const handlePurchase = () => {
-        console.log("bingo..")
         if (!user?.email) {
             history.push('/login')
         } else {
