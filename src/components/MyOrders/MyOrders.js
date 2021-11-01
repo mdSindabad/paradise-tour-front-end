@@ -20,14 +20,14 @@ const MyOrders = ({ user }) => {
                     You haven't ordered anything yet!
                 </Alert> :
                     myOrders.map((item, index) => {
-                        return <div className="order d-flex justify-content-between align-items-center">
-                            <div className="">
+                        return <div className="order">
+                            <div className="d-flex justify-content-between align-items-center">
                                 <p><b>{index + 1}. {item.package}</b></p>
                                 <Badge className="text-capitalize" bg={item.status == "completed" ? "success" : "primary"}>{item.status}</Badge>
                             </div>
-                            <div className="">
-                                <Button onClick={() => updateStatus(item._id)} className={item.status == "completed" ? "btn-sm mt-3 disabled" : "btn-sm mt-3"} variant="success">Update</Button>
-                                <Button onClick={() => cancelOrder(item._id)} className={item.status == "completed" ? "btn-sm mt-3 disabled" : "btn-sm mt-3"} variant="danger">Cancel</Button>
+                            <div className="d-flex mb-1">
+                                <Button onClick={() => updateStatus(item._id)} className={item.status == "completed" ? "btn-sm mt-2 disabled" : "btn-sm mt-2"} variant="success">Update</Button>
+                                <Button onClick={() => cancelOrder(item._id)} className={item.status == "completed" ? "btn-sm mt-2 disabled" : "btn-sm mt-2"} variant="danger">Cancel</Button>
                             </div>
                         </div>
                     })
