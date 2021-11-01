@@ -1,6 +1,7 @@
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { FaUserCircle } from 'react-icons/fa';
+import MyOrders from '../MyOrders/MyOrders';
 
 const UserModal = ({ show, handleClose, user, logOut }) => {
 
@@ -22,6 +23,8 @@ const UserModal = ({ show, handleClose, user, logOut }) => {
             <Modal.Body>
                 <p className="text-capitalize"><b>Name:</b> {user.displayName}</p>
                 <p><b>Email:</b> {user.email}</p>
+                <hr />
+                <MyOrders user={user} />
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="danger" onClick={logOut}>

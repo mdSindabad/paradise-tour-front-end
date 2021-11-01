@@ -1,0 +1,10 @@
+.order {
+    background-color: rgb(196, 195, 194);
+    padding: 2px 5px;
+    margin: 5px 0;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgb(235, 233, 233);
+}
+.order p {
+    margin: 0;
+}
