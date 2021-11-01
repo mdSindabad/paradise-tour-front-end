@@ -27,7 +27,7 @@ const UpcomingTour = () => {
     const updateStatus = (id) => {
         const res = window.confirm("Do you want to update status?")
         if (res) {
-            axios.post(`http://localhost:5000/update-status/${id}`, {
+            axios.put(`http://localhost:5000/update-status/${id}`, {
                 status: "completed"
             })
                 .then(res => {
@@ -42,9 +42,8 @@ const UpcomingTour = () => {
     const cancelOrder = (id) => {
         const res = window.confirm("Do you want to cancel order?")
         if (res) {
-            axios.post(`http://localhost:5000/cancel-order/${id}`, {})
+            axios.delete(`http://localhost:5000/cancel-order/${id}`, {})
                 .then(res => {
-                    console.log(res.data)
                     setUpdate(true)
                 })
                 .catch(err => console.log(err))
