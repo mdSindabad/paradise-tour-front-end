@@ -1,17 +1,17 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Alert, Badge, Button, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import useManageOrder from '../../hooks/useManageOrder';
 import usePurchased from '../../hooks/usePurchased';
 import useServices from '../../hooks/useServices';
 import './ManageOrders.css';
 
 const ManageOrders = () => {
-    // context hook
-    const { purchased, setUpdate } = usePurchased();
+    // hooks
+    const { purchased } = usePurchased();
     const { services, isLoading } = useServices();
+    const { updateStatus, cancelOrder } = useManageOrder();
 
-    console.log(services)
     // local state
     const [filteredList, setFilteredList] = useState([]);
     const [selected, setSelected] = useState('all');
@@ -24,35 +24,6 @@ const ManageOrders = () => {
         } else {
             setFilteredList(newList);
         }
-    }
-
-    const updateStatus = (id) => {
-        const res = window.confirm("Do you want to update status?")
-        if (res) {
-            axios.put(`https://lit-castle-83888.herokuapp.com/update-status/${id}`, {
-                status: "completed"
-            })
-                .then(res => {
-                    setUpdate(true)
-                })
-                .catch(err => console.log(err))
-        } else {
-            return
-        }
-    }
-
-    const cancelOrder = (id) => {
-        const res = window.confirm("Do you want to cancel order?")
-        if (res) {
-            axios.delete(`https://lit-castle-83888.herokuapp.com/cancel-order/${id}`, {})
-                .then(res => {
-                    setUpdate(true)
-                })
-                .catch(err => console.log(err))
-        } else {
-            return
-        }
-
     }
 
     useEffect(() => {
