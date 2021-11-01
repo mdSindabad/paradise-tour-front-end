@@ -17,6 +17,7 @@ import DestinationDetails from './pages/DestinationDetails/DestinationDetails';
 import TeamsProvider from './contexts/TeamsProvider';
 import PurchasedProvider from './contexts/PurchasedProvider';
 import ManageOrders from './pages/ManageOrders/ManageOrders';
+import AddDestination from './pages/AddDestination/AddDestination';
 
 function App() {
   return (
@@ -41,6 +42,9 @@ function App() {
                 </Route>
                 <PrivateRoute path='/upcoming-tours'>
                   <ManageOrders />
+                </PrivateRoute>
+                <PrivateRoute path='/add-destination'>
+                  <AddDestination />
                 </PrivateRoute>
                 <Route path='/about'>
                   <About />

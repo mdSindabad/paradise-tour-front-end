@@ -1,14 +1,22 @@
-import React from 'react';
-import { Alert, Container, Spinner } from 'react-bootstrap';
+import React, { useEffect } from 'react';
+import { Alert, Container, Spinner, Button } from 'react-bootstrap';
 import useServices from '../../hooks/useServices';
 import Destination from '../../components/Destination/Destination';
 import './destinations.css';
+import useAuth from '../../hooks/useAuth';
+import { Link } from 'react-router-dom';
 
 
 const Destinations = () => {
+    //auth context
+    const { user } = useAuth();
+
     // services context
     const { services, isLoading, error } = useServices();
 
+    useEffect(() => {
+
+    }, [services])
     return (
         <Container className="mt-4 pt-4">
             <h1 className="my-3 text-primary">Destinations</h1>
@@ -21,14 +29,19 @@ const Destinations = () => {
                             {error}!
                         </Alert>
                     </div> :
-                        <div className="services-container mb-3">
+                        <div className="mb-3">
                             {
-                                services?.map(service => {
-                                    return (
-                                        <Destination key={service.id} data={service} />
-                                    )
-                                })
+                                user?.email && <Button as={Link} to="/add-destination" className="my-3">Add Destination</Button>
                             }
+                            <div className="services-container">
+                                {
+                                    services?.map(service => {
+                                        return (
+                                            <Destination key={service.id} data={service} />
+                                        )
+                                    })
+                                }
+                            </div>
                         </div>
             }
         </Container >
