@@ -2,8 +2,12 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { Col, Form, Row, Button } from 'react-bootstrap'
 import { useHistory } from 'react-router';
+import useServices from '../../hooks/useServices';
 
 const AddDestination = () => {
+    // services context
+    const { setUpdate } = useServices();
+
     // router api
     const history = useHistory();
 
@@ -44,6 +48,7 @@ const AddDestination = () => {
             axios.post("https://lit-castle-83888.herokuapp.com/add-destination", data)
                 .then(res => {
                     if (res.data.insertedId) {
+                        setUpdate(true);
                         history.push('/destinations')
                     }
                 })
