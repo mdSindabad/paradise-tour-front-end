@@ -36,9 +36,10 @@ const ManageOrders = () => {
             <h1 className="text-primary">Manage Orders</h1>
             <Button as={Link} to="/tours" variant="primary">Recent Tours</Button>
             <div className="btn-container d-flex flex-wrap gap-2">
+                <button onClick={updateList} className={selected == "all" && "selected"}>All</button>
                 {
                     !isLoading && services?.map(service => {
-                        return <button onClick={updateList} className={selected == "santorini" && "selected"}>{service.title?.split(":")[0]}</button>
+                        return <button onClick={updateList} className={selected == service.title?.split(":")[0].toLowerCase() && "selected"}>{service.title?.split(":")[0]}</button>
                     })
                 }
             </div>
